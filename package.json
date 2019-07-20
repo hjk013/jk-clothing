@@ -1,0 +1,55 @@
+{
+  "name": "jk-clothing",
+  "version": "1.0.0",
+  "description": "E-Commerce Shopping Website",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p",
+    "webpack": "webpack -w",
+    "now-build": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "Hooks",
+    "GraphQL",
+    "ContextAPI",
+    "Stripe",
+    "Firebase"
+  ],
+  "author": "Jun Kim",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "node-sass": "^4.12.0",
+    "path": "^0.12.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.5.5",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.2",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^3.1.0",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6"
+  }
+}
