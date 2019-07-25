@@ -5,6 +5,7 @@ module.exports = {
   output: {
     path: path.resolve('./public/dist/'),
     filename: 'bundle.js',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -35,6 +36,10 @@ module.exports = {
         loader: 'file-loader',
       },
     ],
+  },
+  devServer: {
+    contentBase: path.join(__dirname, './public/dist'),
+    historyApiFallback: true,
   },
   plugins: [
     // new HtmlWebpackPlugin({
