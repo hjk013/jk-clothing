@@ -1,27 +1,8 @@
 {
-  "extends": ["airbnb", "prettier", "prettier/react"],
-  "plugins": ["prettier"],
+  "extends": ["wesbos"],
   "rules": {
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
     "react/prop-types": 0,
-    "no-underscore-dangle": 0,
-    "import/imports-first": ["error", "absolute-first"],
-    "import/newline-after-import": "error"
-  },
-  "globals": {
-    "window": true,
-    "document": true,
-    "localStorage": true,
-    "FormData": true,
-    "FileReader": true,
-    "Blob": true,
-    "navigator": true
-  },
-
-  "parserOptions": { "sourceType": "module" }
+    "jsx-a11y/label-has-associated-control": 0,
+    "jsx-a11y/label-has-for": 0
+  }
 }
