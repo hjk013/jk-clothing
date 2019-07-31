@@ -6,8 +6,10 @@ import { auth } from '../../firebase/firebase.util';
 import Logo from '../../../dist/assets/crown.svg';
 
 import './header.styles.scss';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-const Header = ({ currentUser }) => (
+const Header = ({ currentUser, hidden }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       <img className="logo" src={Logo} alt="Logo" />
@@ -28,14 +30,17 @@ const Header = ({ currentUser }) => (
           SIGN IN
         </Link>
       )}
+      <CartIcon />
     </div>
+    {hidden ? null : <CartDropdown />}
   </div>
 );
 
 // state here is the top-level root reducer
 // state gives us the root reducer which is an object, gets us the user, which is the userReducer
-const mapStatetoProps = state => ({
-  currentUser: state.user.currentUser,
+const mapStatetoProps = ({ user: { currentUser }, cart: { hidden } }) => ({
+  currentUser,
+  hidden,
 });
 
 export default connect(mapStatetoProps)(Header);
