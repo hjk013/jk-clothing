@@ -1,4 +1,7 @@
+import { UserActionTypes } from './user.types';
+
 // setting initial state so that redux knows what it is when it fires for the first time
+
 const INITIAL_STATE = {
   currentUser: null,
 };
@@ -6,7 +9,7 @@ const INITIAL_STATE = {
 const userReducer = (state = INITIAL_STATE, action) => {
   // if it is the action.type of 'SET_CURRENT_USER'
   switch (action.type) {
-    case 'SET_CURRENT_USER':
+    case UserActionTypes.SET_CURRENT_USER:
       // return everything that was already in the current state,
       // (since we only want to change the parts we need to)
       // set with whatever you wanna set it to
