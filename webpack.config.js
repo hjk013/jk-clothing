@@ -3,9 +3,9 @@ const path = require('path');
 module.exports = {
   entry: ['babel-polyfill', path.resolve('./public/src/')],
   output: {
-    path: path.resolve('./public/dist/'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, './public/dist/'),
     publicPath: '/',
+    filename: 'bundle.js',
   },
   module: {
     rules: [
