@@ -31,7 +31,7 @@ class App extends React.Component {
 
         // we need to check if our databqse has updated at that reference
         // .onsnapShot() gets us back the snapShot object, but remember we need to call .data() method to get the actual properties
-        // subscriber is always listening.. onSnapShot
+        // subscriber is always listening.. onSnapShot lisetner
         userRef.onSnapshot(snapShot => {
           setCurrentUser({
             id: snapShot.id,
