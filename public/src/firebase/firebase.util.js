@@ -13,6 +13,8 @@ const config = {
   appId: '1:444914111346:web:17e440ce09760326',
 };
 
+firebase.initializeApp(config);
+
 // making an API request to Firebase so that we can save user to database
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   // if user does not exist, we want to do nothing
@@ -83,15 +85,21 @@ export const convertCollectionsSnapshotToMap = collections => {
   }, {});
 };
 
-firebase.initializeApp(config);
+export const getCurrentUser = () =>
+  new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 // Google Authentication
-const provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 // We want to always trigger the Google pop up whenever we use this Google Auth provider for authentification and sign in
-provider.setCustomParameters({ prompt: 'select_account' });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+googleProvider.setCustomParameters({ prompt: 'select_account' });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;

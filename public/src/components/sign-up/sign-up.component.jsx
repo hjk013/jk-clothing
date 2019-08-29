@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.util';
+import { connect } from 'react-redux';
 import './sign-up.styles.scss';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
+import { signUpStart } from '../../redux/user/user.action';
 
 class SignUp extends React.Component {
   constructor() {
@@ -21,30 +22,32 @@ class SignUp extends React.Component {
     event.preventDefault();
 
     const { displayName, email, password, confirmPassword } = this.state;
+    const { signUpStart } = this.props;
 
     if (password !== confirmPassword) {
       alert('passwords do not match');
-      return;
+    } else {
+      signUpStart(displayName, email, password);
     }
 
-    try {
-      // the createuserwithemailPassword gives us back a user and subscribes
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
+    // try {
+    //   // the createuserwithemailPassword gives us back a user and subscribes
+    //   const { user } = await auth.createUserWithEmailAndPassword(
+    //     email,
+    //     password
+    //   );
 
-      createUserProfileDocument(user, { displayName });
+    //   createUserProfileDocument(user, { displayName });
 
-      this.setState({
-        displayName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
+    //   this.setState({
+    //     displayName: '',
+    //     email: '',
+    //     password: '',
+    //     confirmPassword: '',
+    //   });
+    // } catch (error) {
+    //   console.log(error.message);
+    // }
   };
 
   handleChange = event => {
@@ -99,4 +102,12 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp;
+const mapDispatchToProps = dispatch => ({
+  signUpStart: (displayName, email, password) =>
+    dispatch(signUpStart({ displayName, email, password })),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(SignUp);

@@ -11,10 +11,6 @@ app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public/dist')));
 
-app.get(' * ', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../public/dist/index.html'));
-});
-
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
@@ -22,6 +18,10 @@ app.use(function(req, res, next) {
     'Origin, X-Requested-With, Content-Type, Accept'
   );
   next();
+});
+
+app.get(' * ', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../public/dist/index.html'));
 });
 
 app.listen(PORT, () =>

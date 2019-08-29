@@ -10,38 +10,36 @@ import ShopPage from '../pages/shop/shop.component';
 import Header from '../components/header/header.component';
 import SignUpAndSignIn from '../pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 
-import { auth, createUserProfileDocument } from '../firebase/firebase.util';
-
-import { setCurrentUser } from '../redux/user/user.action';
 import './app.css';
 import { selectCurrentUser } from '../redux/user/user.selectors';
 
 import CheckoutPage from '../pages/checkout/checkout.component';
+import { checkUserSession } from '../redux/user/user.action';
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
     // eslint-disable-next-line no-shadow
-    const { setCurrentUser } = this.props;
     // This is our Open Subscription
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-
-        // we need to check if our databqse has updated at that reference
-        // .onsnapShot() gets us back the snapShot object, but remember we need to call .data() method to get the actual properties
-        // subscriber is always listening.. onSnapShot lisetner
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data(),
-          });
-        });
-      } else {
-        setCurrentUser(userAuth);
-      }
-    });
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
+    //     // we need to check if our databqse has updated at that reference
+    //     // .onsnapShot() gets us back the snapShot object, but remember we need to call .data() method to get the actual properties
+    //     // subscriber is always listening.. onSnapShot lisetner
+    //     userRef.onSnapshot(snapShot => {
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data(),
+    //       });
+    //     });
+    //   } else {
+    //     setCurrentUser(userAuth);
+    //   }
+    // });
   }
 
   componentWillUnmount() {
@@ -75,8 +73,9 @@ const mapStatetoProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user)),
+  checkUserSession: () => dispatch(checkUserSession()),
 });
+
 export default connect(
   mapStatetoProps,
   mapDispatchToProps
