@@ -4,6 +4,8 @@
   "description": "E-Commerce Shopping Website",
   "main": "index.js",
   "scripts": {
+    "start": "node rest-server/server.js",
+    "heroku-postbuild": "webpack -p",
     "build": "webpack -p",
     "webpack": "webpack -w",
     "nodemon": "nodemon rest-server/server.js",
