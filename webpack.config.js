@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   entry: ['babel-polyfill', path.resolve('./public/src/')],
@@ -43,9 +42,12 @@ module.exports = {
     historyApiFallback: true,
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
-    }),
+    // new HtmlWebpackPlugin({
+    //   // injects bundle.js to our new index.html
+    //   inject: true,
+    //   // copys the content of the existing index.html to the new /build index.html
+    //   template:  path.resolve('./dist/index.html'),
+    // }),
   ],
   resolve: {
     extensions: ['*', '.js', '.jsx'],
