@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "E-Commerce Shopping Website",
   "main": "index.js",
+  "proxy": "http://localhost:1212",
   "scripts": {
     "start": "node rest-server/server.js",
     "heroku-postbuild": "webpack -p",
