@@ -21,6 +21,7 @@
   "author": "Jun Kim",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.0",
     "firebase": "^6.3.3",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",

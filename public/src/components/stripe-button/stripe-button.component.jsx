@@ -1,5 +1,7 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
+import logo from '../../../dist/assets/crown.svg';
 
 const StripeCheckoutButton = ({ price }) => {
   // remember Stripe wants price in cents
@@ -7,8 +9,23 @@ const StripeCheckoutButton = ({ price }) => {
   const publishableKey = 'pk_test_ldueLxUKSt6YsxgXUhcTGJzy00Zl3Uqtrv';
 
   const onToken = token => {
-    console.log('Stripe token', token);
-    alert('Test Payment Successful');
+    axios({
+      url: 'payment',
+      method: 'post',
+      data: {
+        amount: priceForStripe,
+        token,
+      },
+    })
+      .then(res => {
+        alert('Payment Successful!');
+      })
+      .catch(err => {
+        console.log('Payment error: ', JSON.parse(err));
+        alert(
+          'There was an issue with your payment. Please make sure you use the provided credit card'
+        );
+      });
   };
 
   return (
@@ -17,7 +34,7 @@ const StripeCheckoutButton = ({ price }) => {
       name="JK Clothing Ltd."
       billingAddress
       shippingAddress
-      image="https://sendeyo.com/en/43e33cffd8"
+      image={logo}
       description={`Your total is $${price}`}
       amount={priceForStripe}
       panelLabel="Pay Now"
