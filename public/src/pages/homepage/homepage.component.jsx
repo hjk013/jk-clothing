@@ -10,9 +10,7 @@ import { HomePageContainer } from './homepage.styles';
 const HomePage = () => (
   <HomePageContainer>
     <div className="home-bg">
-      <div className="home-title">
-        <img src={title} alt="title"></img>
-      </div>
+      <img className="home-title" src={title} alt="title"></img>
       <Link className="home-button" to="/shop">
         <h1 className="button-title">SHOP NOW</h1>
       </Link>

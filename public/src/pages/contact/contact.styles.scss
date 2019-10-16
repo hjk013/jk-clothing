@@ -1,0 +1,11 @@
+.contact {
+  display: flex;
+  justify-content: center;
+
+  .heading {
+    @media screen and (max-width: 800px) {
+      font-size: 15px;
+      margin-bottom: 100%;
+    }
+  }
+}

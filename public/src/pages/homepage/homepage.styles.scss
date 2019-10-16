@@ -9,10 +9,20 @@
   align-items: center;
   justify-content: center;
 
+  @media screen and (max-width: 800px) {
+    height: 30vh;
+    margin-bottom: 30px;
+  }
+
   .home-title {
-    max-width: 95%;
+    max-width: 100%;
     height: auto;
     margin-bottom: 75px;
+
+    @media screen and (max-width: 800px) {
+      height: 15vh;
+      margin-bottom: 30px;
+    }
   }
 
   .home-button {
@@ -27,6 +37,11 @@
     opacity: 0.7;
     align-self: center;
 
+    @media screen and (max-width: 800px) {
+      height: 25px;
+      padding: 0 5px;
+    }
+
     &:hover {
       cursor: pointer;
       background-color: #ffcf40;
@@ -38,6 +53,10 @@
       font-size: 22px;
       color: white;
       opacity: 1;
+
+      @media screen and (max-width: 800px) {
+        font-size: 14px;
+      }
     }
   }
 }
