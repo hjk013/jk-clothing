@@ -9,7 +9,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 // rest server
 
 const app = express();
-const PORT = process.env.PORT || 1212;
+const PORT = process.env.PORT || 9000;
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));

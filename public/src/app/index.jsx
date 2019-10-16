@@ -15,6 +15,7 @@ import { selectCurrentUser } from '../redux/user/user.selectors';
 
 import CheckoutPage from '../pages/checkout/checkout.component';
 import { checkUserSession } from '../redux/user/user.action';
+import Footer from '../components/footer/footer.component';
 
 const App = ({ checkUserSession, currentUser }) => {
   useEffect(() => {
@@ -55,6 +56,7 @@ const App = ({ checkUserSession, currentUser }) => {
           }
         />
       </Switch>
+      <Footer />
     </div>
   );
 };

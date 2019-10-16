@@ -10,6 +10,7 @@
     "build": "webpack -p",
     "webpack": "webpack -w",
     "nodemon": "nodemon rest-server/server.js",
+    "serve": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -17,7 +18,6 @@
     "Redux",
     "Hooks",
     "GraphQL",
-    "ContextAPI",
     "Stripe",
     "Firebase"
   ],
@@ -48,7 +48,8 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "stripe": "^7.8.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "webpack-dev-server": "^3.8.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
