@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 
 import './homepage.styles.scss';
 // import Directory from '../../components/directory/directory.component';
-// import title from '../../../dist/assets/hp_title.png';
+import title from '../../../dist/assets/hp_title.png';
 
 import { HomePageContainer } from './homepage.styles';
 
 const Directory = lazy(() =>
   import('../../components/directory/directory.component')
 );
-const title = lazy(() => import('../../../dist/assets/hp_title.png'));
 
 const HomePage = () => (
   <Suspense fallback={<div>Loading...</div>}>
